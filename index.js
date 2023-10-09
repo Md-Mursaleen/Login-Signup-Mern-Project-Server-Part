@@ -8,11 +8,11 @@ const authRoutes = require("./routes/authRoutes");
 const requiredToken = require("./middlewares/AuthTokenRequired");
 
 app.use(bodyParser.json());
-app.use("/api/v1", authRoutes);
+app.use(authRoutes);
 
-app.get("/", requiredToken, (req, res) => {
-    res.send(req.user);
-});
+// app.get("/api", requiredToken, (req, res) => {
+//     res.send(req.user);
+// });
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
