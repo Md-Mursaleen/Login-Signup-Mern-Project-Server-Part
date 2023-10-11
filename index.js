@@ -8,9 +8,9 @@ const authRoutes = require("./routes/authRoutes");
 const requiredToken = require("./middlewares/AuthTokenRequired");
 
 app.use(bodyParser.json());
-app.use(authRoutes);
+app.use("/user", authRoutes);
 
-app.get("/api", requiredToken, (req, res) => {
+app.get("/", requiredToken, (req, res) => {
     res.send(req.user);
 });
 
