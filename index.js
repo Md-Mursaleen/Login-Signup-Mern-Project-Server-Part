@@ -1,5 +1,5 @@
 const express = require("express");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || "3000";
 const app = express();
 const bodyParser = require("body-parser");
 require("./db");
@@ -8,10 +8,10 @@ const authRoutes = require("./routes/authRoutes");
 const requiredToken = require("./middlewares/AuthTokenRequired");
 
 app.use(bodyParser.json());
-app.use("/user", authRoutes);
+app.use(authRoutes);
 
-app.get("/", requiredToken, (req, res) => {
-    res.send(req.user);
+app.get("/", (req, res) => {
+    res.send("Welcome to used2.com");
 });
 
 app.listen(port, () => {
